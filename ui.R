@@ -19,7 +19,6 @@ library(plotly)
 
 
 shinyUI(fluidPage(theme = shinytheme("readable"),
-
                   ## Title and headings
                   titlePanel("GooglyPlusPlus 2021!!!"),
                   h5("GooglyPlusPlus"),
@@ -89,10 +88,12 @@ shinyUI(fluidPage(theme = shinytheme("readable"),
                                                                  ),
                                                                  # Analyze IPL matches
                                                                  tabPanel("IPL Match",
+                                                                          
                                                                           h4('Analyze an IPL match'),
                                                                           sidebarPanel(
                                                                               selectInput('matchFunc', 'Select match function', matchFuncs),
-                                                                              selectInput('match', 'Select IPL match ', IPLMatches,selectize=FALSE, size=12),
+                                                                              tags$head(tags$style(type="text/css", '.myclass .shiny-bound-input{overflow-x: scroll;}')),
+                                                                              tags$div(id="myclass1", class="myclass",selectInput('match', 'Select IPL match ', IPLMatches,selectize=FALSE, size=12,width='800px')),
                                                                               uiOutput("selectTeam"),
                                                                               radioButtons("plotOrTable", label = h4("Plot(static,interactive) or table"),
                                                                                            choices = c("Plot(interactive)" = 2, "Plot(static)" = 1, "Table" = 3),
